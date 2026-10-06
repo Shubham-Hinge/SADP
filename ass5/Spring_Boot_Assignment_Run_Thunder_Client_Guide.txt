@@ -1,0 +1,651 @@
+SPRING BOOT ASSIGNMENT - COMPLETE RUN + THUNDER CLIENT GUIDE
+===============================================================
+
+EXTRACTED PROJECTS
+------------------
+1. Q1 - Student REST API       -> Port 8081
+2. Q2 - Department Employee    -> Port 8082
+3. Q3 - HR Interview Service   -> Port 8083
+4. EXTRA_Q1 - API Gateway      -> Port 8080
+
+IMPORTANT:
+The ZIP contains source code for Q1, Q2, Q3 and EXTRA_Q1.
+Q3 contains Candidate.java and HrApp.java, but no REST Controller/Service
+for /api/hr. Therefore, do not invent Q3 endpoints. The supplied Q3
+project is incomplete from a REST API perspective.
+
+
+===============================================================
+Q1 - STUDENT REST API
+===============================================================
+
+TASK / QUESTION
+---------------
+Implement a Spring Boot Student REST Service with:
+1. Add a student
+2. Get all students
+3. Get student by ID
+4. Update student
+5. Delete student
+6. Validate student input
+
+MAIN URL
+--------
+http://localhost:8081/api/students
+
+
+Q1 - LINUX COMMANDS
+--------------------
+
+Go to the project:
+cd ~/Downloads/ass5/q1
+
+Check files:
+ls
+
+Check Java:
+java -version
+
+Check Maven:
+mvn -version
+
+Build:
+./mvnw clean install
+
+Run:
+./mvnw spring-boot:run
+
+Stop:
+Ctrl + C
+
+
+Q1 - THUNDER CLIENT
+-------------------
+
+1. ADD STUDENT
+
+Method:
+POST
+
+URL:
+http://localhost:8081/api/students
+
+Header:
+Content-Type: application/json
+
+JSON:
+{
+  "name": "Vivek Singh",
+  "email": "vivek@example.com",
+  "course": "MSc Computer Science",
+  "year": 1,
+  "phone": "9876543210"
+}
+
+
+2. GET ALL STUDENTS
+
+Method:
+GET
+
+URL:
+http://localhost:8081/api/students
+
+No body.
+
+
+3. GET STUDENT BY ID
+
+Method:
+GET
+
+URL:
+http://localhost:8081/api/students/1
+
+No body.
+
+
+4. UPDATE STUDENT
+
+Method:
+PUT
+
+URL:
+http://localhost:8081/api/students/1
+
+Header:
+Content-Type: application/json
+
+JSON:
+{
+  "name": "Vivek Singh Updated",
+  "email": "vivek.updated@example.com",
+  "course": "MSc Computer Science",
+  "year": 2,
+  "phone": "9876543210"
+}
+
+
+5. DELETE STUDENT
+
+Method:
+DELETE
+
+URL:
+http://localhost:8081/api/students/1
+
+No body.
+
+
+6. VALIDATION TEST
+
+Method:
+POST
+
+URL:
+http://localhost:8081/api/students
+
+JSON:
+{
+  "name": "",
+  "email": "wrong-email",
+  "course": "",
+  "year": 5,
+  "phone": "123"
+}
+
+Expected:
+400 Bad Request with validation errors.
+
+
+Q1 - COMPLETE URL LIST
+----------------------
+
+POST    http://localhost:8081/api/students
+GET     http://localhost:8081/api/students
+GET     http://localhost:8081/api/students/1
+PUT     http://localhost:8081/api/students/1
+DELETE  http://localhost:8081/api/students/1
+
+
+===============================================================
+Q2 - DEPARTMENT EMPLOYEE SERVICE
+===============================================================
+
+TASK / QUESTION
+---------------
+Implement a Spring Boot REST service to:
+1. Display all employees
+2. Display employees according to department
+3. Display all departments
+4. Add an employee
+
+MAIN URL
+--------
+http://localhost:8082/api/employees
+
+
+Q2 - LINUX COMMANDS
+--------------------
+
+Go to project:
+cd ~/Downloads/ass5/q2
+
+Check:
+ls
+
+Build:
+./mvnw clean install
+
+Run:
+./mvnw spring-boot:run
+
+Stop:
+Ctrl + C
+
+
+Q2 - THUNDER CLIENT
+-------------------
+
+1. GET ALL EMPLOYEES
+
+Method:
+GET
+
+URL:
+http://localhost:8082/api/employees
+
+No body.
+
+
+2. GET EMPLOYEES BY IT DEPARTMENT
+
+Method:
+GET
+
+URL:
+http://localhost:8082/api/employees/department/IT
+
+No body.
+
+
+3. GET EMPLOYEES BY HR DEPARTMENT
+
+Method:
+GET
+
+URL:
+http://localhost:8082/api/employees/department/HR
+
+No body.
+
+
+4. GET EMPLOYEES BY FINANCE DEPARTMENT
+
+Method:
+GET
+
+URL:
+http://localhost:8082/api/employees/department/Finance
+
+No body.
+
+
+5. GET ALL DEPARTMENTS
+
+Method:
+GET
+
+URL:
+http://localhost:8082/api/employees/departments
+
+No body.
+
+
+6. ADD EMPLOYEE
+
+Method:
+POST
+
+URL:
+http://localhost:8082/api/employees
+
+Header:
+Content-Type: application/json
+
+JSON:
+{
+  "eno": 107,
+  "ename": "Vivek",
+  "designation": "Software Developer",
+  "deptName": "IT",
+  "salary": 55000
+}
+
+
+Q2 - COMPLETE URL LIST
+----------------------
+
+GET  http://localhost:8082/api/employees
+GET  http://localhost:8082/api/employees/department/IT
+GET  http://localhost:8082/api/employees/department/HR
+GET  http://localhost:8082/api/employees/department/Finance
+GET  http://localhost:8082/api/employees/departments
+POST http://localhost:8082/api/employees
+
+
+===============================================================
+Q3 - HR INTERVIEW SERVICE
+===============================================================
+
+PROJECT:
+q3
+
+PORT:
+8083
+
+TASK / INTENDED SERVICE
+-----------------------
+The application contains a Candidate model with:
+id
+name
+email
+position
+status
+
+The application prints:
+HR: http://localhost:8083/api/hr
+
+IMPORTANT:
+The supplied source does NOT contain a REST Controller/Service for
+/api/hr. Therefore, the endpoint is not implemented in the ZIP.
+
+Do not submit a fake endpoint as working.
+
+
+Q3 - LINUX COMMANDS
+--------------------
+
+Go to project:
+cd ~/Downloads/ass5/q3
+
+Build:
+./mvnw clean install
+
+Run:
+./mvnw spring-boot:run
+
+Server:
+http://localhost:8083
+
+Checking the missing endpoint:
+curl http://localhost:8083/api/hr
+
+Expected result:
+404 Not Found
+
+
+===============================================================
+EXTRA Q1 - API GATEWAY
+===============================================================
+
+PURPOSE
+-------
+The API Gateway runs on port 8080 and forwards Student API requests
+to the Student Service on port 8081.
+
+ARCHITECTURE
+------------
+
+Thunder Client
+      |
+      v
+localhost:8080
+      |
+      v
+API Gateway
+      |
+      v
+localhost:8081
+      |
+      v
+Student Service
+
+
+GATEWAY - LINUX COMMANDS
+------------------------
+
+IMPORTANT:
+Start Q1 Student Service FIRST.
+
+TERMINAL 1:
+cd ~/Downloads/ass5/q1
+./mvnw spring-boot:run
+
+TERMINAL 2:
+cd ~/Downloads/ass5/extra_q1
+./mvnw clean install
+./mvnw spring-boot:run
+
+
+GATEWAY - THUNDER CLIENT
+------------------------
+
+1. GET STUDENTS THROUGH GATEWAY
+
+Method:
+GET
+
+URL:
+http://localhost:8080/api/students
+
+No body.
+
+
+2. ADD STUDENT THROUGH GATEWAY
+
+Method:
+POST
+
+URL:
+http://localhost:8080/api/students
+
+Header:
+Content-Type: application/json
+
+JSON:
+{
+  "name": "Vivek Singh",
+  "email": "vivek@example.com",
+  "course": "MSc Computer Science",
+  "year": 1,
+  "phone": "9876543210"
+}
+
+
+3. GET STUDENTS USING /students ROUTE
+
+Method:
+GET
+
+URL:
+http://localhost:8080/students
+
+No body.
+
+This is rewritten by the gateway to:
+/api/students
+
+
+4. GET STUDENT BY ID THROUGH GATEWAY
+
+Method:
+GET
+
+URL:
+http://localhost:8080/students/1
+
+No body.
+
+Gateway forwards to:
+/api/students/1
+
+
+===============================================================
+ALL PORTS
+===============================================================
+
+Student Service:
+8081
+
+Employee Service:
+8082
+
+HR Service:
+8083
+
+API Gateway:
+8080
+
+
+===============================================================
+RUN ALL SERVICES
+===============================================================
+
+TERMINAL 1 - STUDENT
+--------------------
+cd ~/Downloads/ass5/q1
+./mvnw clean install
+./mvnw spring-boot:run
+
+
+TERMINAL 2 - EMPLOYEE
+---------------------
+cd ~/Downloads/ass5/q2
+./mvnw clean install
+./mvnw spring-boot:run
+
+
+TERMINAL 3 - HR
+---------------
+cd ~/Downloads/ass5/q3
+./mvnw clean install
+./mvnw spring-boot:run
+
+
+TERMINAL 4 - GATEWAY
+--------------------
+cd ~/Downloads/ass5/extra_q1
+./mvnw clean install
+./mvnw spring-boot:run
+
+
+===============================================================
+LINUX CHECKING COMMANDS
+===============================================================
+
+Check current directory:
+pwd
+
+List files:
+ls
+
+Detailed list:
+ls -la
+
+Go into directory:
+cd ass5
+
+Go back:
+cd ..
+
+Extract ZIP:
+unzip ass5-20261006T171931Z-1-001.zip
+
+Java version:
+java -version
+
+Maven version:
+mvn -version
+
+Maven wrapper version:
+./mvnw -version
+
+Clean:
+./mvnw clean
+
+Compile:
+./mvnw compile
+
+Package:
+./mvnw package
+
+Complete build:
+./mvnw clean install
+
+Run Spring Boot:
+./mvnw spring-boot:run
+
+Stop server:
+Ctrl + C
+
+
+===============================================================
+CHECK SERVICES USING CURL
+===============================================================
+
+Student:
+curl http://localhost:8081/api/students
+
+Employee:
+curl http://localhost:8082/api/employees
+
+HR:
+curl http://localhost:8083/api/hr
+
+Gateway:
+curl http://localhost:8080/api/students
+
+
+===============================================================
+CHECK PORTS
+===============================================================
+
+Check Student port:
+ss -ltnp | grep 8081
+
+Check all assignment ports:
+ss -ltnp | grep -E '8080|8081|8082|8083'
+
+
+===============================================================
+THUNDER CLIENT QUICK CHECKLIST
+===============================================================
+
+Q1 STUDENT
+-----------
+
+POST    localhost:8081/api/students
+GET     localhost:8081/api/students
+GET     localhost:8081/api/students/1
+PUT     localhost:8081/api/students/1
+DELETE  localhost:8081/api/students/1
+
+
+Q2 EMPLOYEE
+-----------
+
+GET     localhost:8082/api/employees
+GET     localhost:8082/api/employees/department/IT
+GET     localhost:8082/api/employees/department/HR
+GET     localhost:8082/api/employees/department/Finance
+GET     localhost:8082/api/employees/departments
+POST    localhost:8082/api/employees
+
+
+Q3 HR
+-----
+
+localhost:8083/api/hr
+
+IMPORTANT:
+Controller is missing in supplied project.
+
+
+EXTRA Q1 GATEWAY
+----------------
+
+GET     localhost:8080/api/students
+POST    localhost:8080/api/students
+GET     localhost:8080/students
+GET     localhost:8080/students/1
+
+
+===============================================================
+MOST IMPORTANT COMMANDS FOR PRACTICAL
+===============================================================
+
+Q1:
+cd ~/Downloads/ass5/q1
+./mvnw clean install
+./mvnw spring-boot:run
+
+Q2:
+cd ~/Downloads/ass5/q2
+./mvnw clean install
+./mvnw spring-boot:run
+
+Q3:
+cd ~/Downloads/ass5/q3
+./mvnw clean install
+./mvnw spring-boot:run
+
+GATEWAY:
+cd ~/Downloads/ass5/extra_q1
+./mvnw clean install
+./mvnw spring-boot:run
+
+
+===============================================================
+END
+===============================================================

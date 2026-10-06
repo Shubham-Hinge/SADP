@@ -1,0 +1,664 @@
+SADP SPRING BOOT ASSIGNMENT
+RUN COMMANDS + URLS + JSON + THUNDER CLIENT CHECKLIST
+=======================================================
+
+PROJECTS
+--------
+1. Task Management
+2. Employee Microservice
+3. User Registration & Login
+4. ERP System
+5. Inventory Management
+6. HR Application
+
+
+=======================================================
+Q1. TASK MANAGEMENT
+=======================================================
+
+PROJECT:
+SADPA4/taskmanagement
+
+PORT:
+8082
+
+RUN COMMAND:
+cd SADPA4/taskmanagement
+mvn spring-boot:run
+
+BASE URL:
+http://localhost:8082/api/tasks
+
+
+1. GET ALL TASKS
+----------------
+Method:
+GET
+
+URL:
+http://localhost:8082/api/tasks
+
+THUNDER CLIENT:
+GET -> URL -> Send
+
+Expected:
+200 OK
+
+
+2. GET TASK BY ID
+-----------------
+Method:
+GET
+
+URL:
+http://localhost:8082/api/tasks/1
+
+Expected:
+200 OK
+
+
+3. POST NEW TASK
+----------------
+Method:
+POST
+
+URL:
+http://localhost:8082/api/tasks
+
+Body -> JSON:
+
+{
+  "id": 3,
+  "title": "Learn REST API",
+  "category": "Programming",
+  "dueDate": "2026-10-10",
+  "completed": false
+}
+
+Header:
+Content-Type: application/json
+
+Expected:
+201 Created
+
+
+4. UPDATE TASK
+--------------
+Method:
+PUT
+
+URL:
+http://localhost:8082/api/tasks/3
+
+Body -> JSON:
+
+{
+  "id": 3,
+  "title": "Learn Spring Boot REST API",
+  "category": "Programming",
+  "dueDate": "2026-10-15",
+  "completed": true
+}
+
+Expected:
+200 OK
+
+
+5. DELETE TASK
+--------------
+Method:
+DELETE
+
+URL:
+http://localhost:8082/api/tasks/3
+
+Expected:
+200 OK / successful delete
+
+
+6. SEARCH BY CATEGORY
+---------------------
+Method:
+GET
+
+URL:
+http://localhost:8082/api/tasks/category/Study
+
+Expected:
+200 OK
+
+
+THUNDER CLIENT ORDER:
+GET ALL
+GET BY ID
+POST
+GET ALL
+PUT
+GET BY ID
+DELETE
+GET ALL
+
+
+=======================================================
+Q2. EMPLOYEE MICROSERVICE
+=======================================================
+
+PROJECT:
+SADPA4/employeemicroservice
+
+PORT:
+8084
+
+RUN COMMAND:
+cd SADPA4/employeemicroservice
+mvn spring-boot:run
+
+BASE URL:
+http://localhost:8084/api/employees
+
+
+1. POST EMPLOYEE
+----------------
+Method:
+POST
+
+URL:
+http://localhost:8084/api/employees
+
+Body -> JSON:
+
+{
+  "eno": 101,
+  "ename": "Vivek Singh",
+  "designation": "Software Developer",
+  "deptName": "IT",
+  "salary": 50000
+}
+
+Header:
+Content-Type: application/json
+
+Expected:
+200 OK
+
+
+2. GET EMPLOYEES
+----------------
+Method:
+GET
+
+URL:
+http://localhost:8084/api/employees
+
+Expected:
+200 OK
+
+
+THUNDER CLIENT ORDER:
+POST EMPLOYEE
+GET EMPLOYEES
+
+
+=======================================================
+Q3. USER REGISTRATION AND LOGIN
+=======================================================
+
+PROJECT:
+SADPA4/userregistration
+
+PORT:
+8083
+
+RUN COMMAND:
+cd SADPA4/userregistration
+mvn spring-boot:run
+
+
+1. REGISTRATION PAGE
+--------------------
+Open browser:
+
+http://localhost:8083/register
+
+This project uses Thymeleaf HTML forms.
+
+
+2. LOGIN PAGE
+-------------
+Open browser:
+
+http://localhost:8083/login
+
+After successful login:
+
+http://localhost:8083/welcome
+
+
+IMPORTANT:
+This project is mainly a browser/Thymeleaf application.
+Do NOT assume REST URLs such as /api/register or /api/login.
+
+
+FORM ROUTES:
+GET  /register
+POST /register
+
+GET  /login
+POST /login
+
+
+=======================================================
+Q4. ERP SYSTEM
+=======================================================
+
+PROJECT:
+SADPA4/erp
+
+PORT:
+8085
+
+RUN COMMAND:
+cd SADPA4/erp
+mvn spring-boot:run
+
+
+INVENTORY BASE URL:
+http://localhost:8085/api/inventory
+
+SALES BASE URL:
+http://localhost:8085/api/sales
+
+FINANCE BASE URL:
+http://localhost:8085/api/finance
+
+
+1. GET INVENTORY
+----------------
+GET
+
+http://localhost:8085/api/inventory
+
+Expected:
+200 OK
+
+
+2. POST INVENTORY
+-----------------
+POST
+
+http://localhost:8085/api/inventory
+
+Body -> JSON:
+
+{
+  "id": 3,
+  "productName": "Mouse",
+  "quantity": 50,
+  "price": 800
+}
+
+Header:
+Content-Type: application/json
+
+Expected:
+200 OK
+
+
+3. GET SALES
+------------
+GET
+
+http://localhost:8085/api/sales
+
+Expected:
+200 OK
+
+
+4. POST SALE
+------------
+POST
+
+http://localhost:8085/api/sales
+
+Body -> JSON:
+
+{
+  "id": 2,
+  "productName": "Keyboard",
+  "quantity": 5,
+  "totalAmount": 6000
+}
+
+Header:
+Content-Type: application/json
+
+Expected:
+200 OK
+
+
+5. GET FINANCE
+--------------
+GET
+
+http://localhost:8085/api/finance
+
+Expected:
+200 OK
+
+
+6. POST FINANCIAL RECORD
+------------------------
+POST
+
+http://localhost:8085/api/finance
+
+Body -> JSON:
+
+{
+  "id": 2,
+  "type": "Expense",
+  "amount": 25000,
+  "description": "Office equipment"
+}
+
+Header:
+Content-Type: application/json
+
+Expected:
+200 OK
+
+
+THUNDER CLIENT ORDER:
+GET INVENTORY
+POST INVENTORY
+GET SALES
+POST SALES
+GET FINANCE
+POST FINANCE
+GET FINANCE AGAIN
+
+
+=======================================================
+Q5. INVENTORY MANAGEMENT
+=======================================================
+
+PROJECT:
+SADPA4/inventory
+
+PORT:
+8086
+
+RUN COMMAND:
+cd SADPA4/inventory
+mvn spring-boot:run
+
+BASE URL:
+http://localhost:8086/api/inventory
+
+
+1. GET ALL PRODUCTS
+-------------------
+GET
+
+http://localhost:8086/api/inventory
+
+Expected:
+200 OK
+
+
+2. GET PRODUCT BY ID
+--------------------
+GET
+
+http://localhost:8086/api/inventory/1
+
+Expected:
+200 OK
+
+
+3. POST PRODUCT
+---------------
+POST
+
+http://localhost:8086/api/inventory
+
+Body -> JSON:
+
+{
+  "id": 1,
+  "name": "Laptop",
+  "quantity": 10,
+  "price": 55000
+}
+
+Header:
+Content-Type: application/json
+
+Expected:
+201 Created
+
+
+IMPORTANT:
+If the Product.java class uses different field names, use the exact
+field names from Product.java.
+
+
+4. UPDATE PRODUCT
+-----------------
+PUT
+
+http://localhost:8086/api/inventory/1
+
+Body -> JSON:
+
+{
+  "id": 1,
+  "name": "Laptop",
+  "quantity": 15,
+  "price": 60000
+}
+
+Expected:
+200 OK
+
+
+5. DELETE PRODUCT
+-----------------
+DELETE
+
+http://localhost:8086/api/inventory/1
+
+Expected:
+Successful delete
+
+
+THUNDER CLIENT ORDER:
+GET ALL
+GET BY ID
+POST
+PUT
+DELETE
+
+
+=======================================================
+Q6. HR APPLICATION
+=======================================================
+
+PROJECT:
+SADPA4/hrapp
+
+PORT:
+8080
+
+RUN COMMAND:
+cd SADPA4/hrapp
+mvn spring-boot:run
+
+
+1. OPEN APPLICATION
+-------------------
+Browser:
+
+http://localhost:8080/
+
+Normally redirects to:
+
+http://localhost:8080/employees
+
+
+2. DISPLAY EMPLOYEES
+--------------------
+Browser:
+
+http://localhost:8080/employees
+
+
+3. NEW EMPLOYEE FORM
+--------------------
+Browser:
+
+http://localhost:8080/employees/new
+
+
+4. SAVE EMPLOYEE
+----------------
+Form submits:
+
+POST
+http://localhost:8080/employees/save
+
+Use the HTML form.
+
+
+5. DELETE EMPLOYEE
+------------------
+GET
+
+http://localhost:8080/employees/delete/1
+
+
+IMPORTANT HR NOTE:
+This HR application is a Thymeleaf MVC application.
+Use the browser form instead of sending arbitrary JSON to /employees/save.
+
+The previous invalid JSON:
+
+{
+  "firstName": "Vivek",
+  "lastName": "Singh",
+  "email": "vivek@example.com",
+  "role": "Developer",
+  "departmentID": {
+    "3"
+  }
+}
+
+is invalid JSON.
+
+Do not use that structure unless the actual Employee model in the project
+defines those fields and an API endpoint accepts JSON.
+
+
+=======================================================
+PORT SUMMARY
+=======================================================
+
+Task Management:
+8082
+http://localhost:8082/api/tasks
+
+Employee Microservice:
+8084
+http://localhost:8084/api/employees
+
+User Registration:
+8083
+http://localhost:8083/register
+
+ERP:
+8085
+http://localhost:8085/api/inventory
+http://localhost:8085/api/sales
+http://localhost:8085/api/finance
+
+Inventory:
+8086
+http://localhost:8086/api/inventory
+
+HR Application:
+8080
+http://localhost:8080/employees
+
+
+=======================================================
+COMMON MAVEN COMMANDS
+=======================================================
+
+Check Java:
+java -version
+
+Check Maven:
+mvn -version
+
+Run project:
+mvn spring-boot:run
+
+Build project:
+mvn clean install
+
+Run packaged JAR:
+java -jar target/<project-name>.jar
+
+
+=======================================================
+THUNDER CLIENT BASIC SETUP
+=======================================================
+
+For every REST POST/PUT request:
+
+Method:
+POST or PUT
+
+Body:
+JSON
+
+Header:
+Content-Type: application/json
+
+Then click:
+Send
+
+Check:
+1. HTTP Status
+2. Response JSON
+3. Response message
+4. Data created/updated/deleted
+
+
+=======================================================
+RECOMMENDED PRACTICAL TEST ORDER
+=======================================================
+
+Q1 Task Management:
+GET -> GET ID -> POST -> GET -> PUT -> GET ID -> DELETE -> GET
+
+Q2 Employee:
+POST -> GET
+
+Q3 User Registration:
+Browser Register -> Browser Login -> Welcome
+
+Q4 ERP:
+GET Inventory -> POST Inventory -> GET Sales -> POST Sales
+-> GET Finance -> POST Finance -> GET Finance
+
+Q5 Inventory:
+GET -> GET ID -> POST -> PUT -> DELETE
+
+Q6 HR:
+Open /employees -> New Employee -> Save -> Delete
+
+
+=======================================================
+END
+=======================================================
